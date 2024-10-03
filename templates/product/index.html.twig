@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}myShop{% endblock %}
+
+{% block body %}
+    <a href="/product/add" class="btn btn-primary m-2">Ajouter +</a>
+    {% for product in products %}
+        <div class="card m-2 p-2">
+            <h3>{{product.name}}</h3>
+            <small>{{product.Category.name}}</small>
+            <img src="uploads{{asset(product.thumbnail)}}" alt="" class="card-img-top">
+            <p>{{product.description}}</p>
+            <h4>{{product.price}} €</h4>
+        </div>
+    {% endfor %}
+{% endblock %}
