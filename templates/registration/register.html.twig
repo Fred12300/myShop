@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Register</h1>
+
+    {{ form_errors(registrationForm) }}
+<div class="container d-flex justify-content-around w-100 border rounded p-5 m-5 bg-dark text-light">
+    {{ form_start(registrationForm) }}
+    <h1>Ajouter un Produit</h1>
+        {{ form_row(registrationForm.email, {'attr': {'class': 'w-100 my-2 d-flex flex-column'}}) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }, {'attr': {'class': 'w-100 my-2'}}) }}
+        {{ form_row(registrationForm.agreeTerms, {'attr': {'class': 'w-100 my-2'}}) }}
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    {{ form_end(registrationForm) }}
+</div>
+{% endblock %}

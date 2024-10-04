@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1> {{ category.name|upper }}</h1>
+    {% for prod in category.products %}
+    <div class="col-12 col-md-6 col-mg-3">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="../uploads{{asset(prod.thumbnail)}}">
+            <h5 class="card-title">{{ prod.name|upper }}</h5>
+            <p class="card-text">{{ prod.description }}</p>
+            <p class="rounded bg-secondary text-light w- text-right">{{ prod.price|number_format(2, ',', ' ') }} €</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+        
+    </div>        
+    {% endfor %}
+</div>
+{% endblock %}

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Form\CategoryType;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,13 +16,17 @@ class CategoryController extends AbstractController
     #[Route('/category', name: 'app_category')]
     public function index(): Response
     {
+        
         return $this->render('category/index.html.twig', [
             'controller_name' => 'CategoryController',
         ]);
     }
 
     #[Route('/category/add', name: 'app_category_add')]
-    public function add(Request $request, EntityManagerInterface $entityManager): Response
+    public function add(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        CategoryRepository $categories): Response
     {
         //Création d'un objet vie de Type Category
         $newCategory = new Category;
@@ -38,10 +43,21 @@ class CategoryController extends AbstractController
             //on envoie en BDD
             $entityManager->flush();
         }
-
+        $AllCategories = $categories->findAll();
         return $this->render('category/add.html.twig', [
             //on renvoie à la vue
-            'formulaire' => $form
+            'formulaire' => $form,
+            'categories' => $AllCategories
+        ]);
+        return $this->redirectToRoute('app_category');
+    }
+
+    #[Route('/category/{id}', name: 'app_category')]
+    public function show(CategoryRepository $cr, $id):Response
+    {
+        $category = $cr->find($id);
+        return $this->render('category/show.html.twig', [
+            'category' => $category
         ]);
     }
 }

@@ -6,12 +6,12 @@
 <div class="container d-flex justify-content-around w-100 border rounded p-5 m-5 bg-dark text-light">
     {{ form_start(formulaire) }}
         <h1>Ajouter un Produit</h1>
-        {{form_row(formulaire.name, {'label': 'Nom', 'attr': {'class': 'w-100 d-flex justify-between my-2'}})}}
-        {{form_row(formulaire.price, {'label': 'Prix', 'attr': {'class': 'w-100 d-flex justify-between my-2'}})}}
-        {{form_row(formulaire.thumbnail, {'label': 'Image', 'attr': {'class': 'w-100 d-flex justify-between my-2'}})}}
-        {{form_row(formulaire.description, {'label': 'Description', 'attr': {'class': 'w-100 d-flex justify-between my-2'}})}}
-        {{form_row(formulaire.category, {'label': 'Catégorie', 'attr': {'class': 'w-100 d-flex justify-between my-2'}})}}
-        {{form_row(formulaire.Enregistrer, {'attr': {'class': 'btn btn-primary w-100 d-flex justify-between p-1 mt-5'}})}}
+        {{form_row(formulaire.name, {'label': 'Nom', 'attr': {'class': 'w-100 my-2'}})}}
+        {{form_row(formulaire.price, {'label': 'Prix', 'attr': {'class': 'w-100 my-2'}})}}
+        {{form_row(formulaire.thumbnail, {'label': 'Image', 'attr': {'class': 'w-100 my-2'}})}}
+        {{form_row(formulaire.description, {'label': 'Description', 'attr': {'class': 'w-100 my-2'}})}}
+        {{form_row(formulaire.category, {'label': 'Catégorie', 'attr': {'class': 'w-100 my-2'}})}}
+        {{form_row(formulaire.Enregistrer, {'attr': {'class': 'btn btn-primary w-100 p-2 mt-5'}})}}
         <a href="/" class="btn btn-primary w-100 mt-2">Annuler</a>
     {{ form_end(formulaire) }}
 </div>

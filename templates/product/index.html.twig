@@ -3,7 +3,17 @@
 {% block title %}myShop{% endblock %}
 
 {% block body %}
-    <a href="/product/add" class="btn btn-primary m-2">Ajouter +</a>
+    {% if app.user %}
+    Bonjour {{app.user}}
+    <a href="/logout" class="btn btn-secondary">Se Déconnecter</a>
+    {% else %}
+    Bonjour Invité
+    <a href="/login" class="btn btn-secondary">Se Connecter</a>
+    <a href="/register" class="btn btn-secondary">Créer un Compte</a>
+    {% endif %}
+    
+    <a href="/product/add" class="btn btn-primary m-2">Ajouter Product +</a>
+    <a href="/category/add" class="btn btn-primary m-2">Ajouter Catégorie +</a>
     {% for product in products %}
         <div class="card m-2 p-2">
             <h3>{{product.name}}</h3>

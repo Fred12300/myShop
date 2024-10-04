@@ -3,6 +3,18 @@
 {% block title %}Ajouter une Categorie{% endblock %}
 
 {% block body %}
+<div class="container d-flex justify-content-around w-100 border rounded p-5 m-5 bg-dark text-light">
+{{ form_start(formulaire) }}
 <h1>Ajouter une Catégorie</h1>
-{{ form(formulaire) }}
+{{form_row(formulaire.name, {'label': 'Nom', 'attr': {'class': 'w-100 d-flex justify-between my-2'}})}}
+{{form_row(formulaire.Enregistrer, {'attr': {'class': 'btn btn-primary w-100 p-2 mt-5'}})}}
+<a href="/" class="btn btn-primary w-100 mt-2">Annuler</a>
+{{ form_end(formulaire) }}
+</div>
+<div class="container d-flex flex-column justify-content-around w-100 border rounded p-5 m-5 bg-dark text-light">
+<h2 class="md-5">Catégories existantes</h2>
+{% for categorie in categories %}
+    <a class="mt-3">{{ categorie.name }}</a>
+{% endfor %}
+</div>
 {% endblock %}
